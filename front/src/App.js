@@ -1,14 +1,24 @@
 import React, { Component } from 'react'
-import AlbumList from './AlbumList'
-
-import albums from './albumsWithRatings'
+import { Container } from 'semantic-ui-react'
+import TodoList from './TodoList'
+import TodoListFilter from './TodoListFilter'
 
 class App extends Component {
+  constructor (props) {
+    super(props)
+    this.state = {
+      tasks: [
+        { id: 1, done: true, description: 'Faire la vaisselle' }
+      ]
+    }
+  }
   render () {
     return (
-      <div>
-        <AlbumList albums={albums} />
-      </div>
+      <Container>
+        <h1>TodoList</h1>
+        <TodoListFilter />
+        <TodoList tasks={this.state.tasks} />
+      </Container>
     )
   }
 }
