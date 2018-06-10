@@ -7,8 +7,8 @@ const TodoList = ({ tasks }) => (
   <Table>
     <Table.Header>
       <Table.Row>
-        <Table.HeaderCell>Header</Table.HeaderCell>
-        <Table.HeaderCell>Header</Table.HeaderCell>
+        <Table.HeaderCell>Done</Table.HeaderCell>
+        <Table.HeaderCell>Description</Table.HeaderCell>
       </Table.Row>
     </Table.Header>
 

@@ -2,16 +2,6 @@ import React, { Component } from 'react'
 import { Form, Grid, Radio } from 'semantic-ui-react'
 
 export default class TodoListFilter extends Component {
-  constructor (props) {
-    super(props)
-    this.state = {
-      value: 'todo'
-    }
-    this.handleChange = this.handleChange.bind(this)
-  }
-  handleChange (e, radio) {
-    this.setState({ value: radio.value })
-  }
   render () {
     return (
       <Form>
@@ -22,8 +12,8 @@ export default class TodoListFilter extends Component {
               label='Show done'
               name='radioGroup'
               value='done'
-              checked={this.state.value === 'done'}
-              onChange={this.handleChange}
+              checked={this.props.value === 'done'}
+              onChange={this.props.onChange}
             />
           </Grid.Column>
           <Grid.Column>
@@ -32,8 +22,8 @@ export default class TodoListFilter extends Component {
               label='Show todo'
               name='radioGroup'
               value='todo'
-              checked={this.state.value === 'todo'}
-              onChange={this.handleChange}
+              checked={this.props.value === 'todo'}
+              onChange={this.props.onChange}
             />
           </Grid.Column>
           <Grid.Column>
@@ -42,8 +32,8 @@ export default class TodoListFilter extends Component {
               label='Show all'
               name='radioGroup'
               value='all'
-              checked={this.state.value === 'all'}
-              onChange={this.handleChange}
+              checked={this.props.value === 'all'}
+              onChange={this.props.onChange}
             />
           </Grid.Column>
         </Grid>
