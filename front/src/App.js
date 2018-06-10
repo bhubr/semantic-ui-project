@@ -1,23 +1,29 @@
 import React, { Component } from 'react'
-import { Container } from 'semantic-ui-react'
-import TodoList from './TodoList'
-import TodoListFilter from './TodoListFilter'
+import { Container, Item } from 'semantic-ui-react'
 
 class App extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      tasks: [
-        { id: 1, done: true, description: 'Faire la vaisselle' }
-      ]
+      users: []
     }
+  }
+  componentDidMount () {
+    fetch('/users')
+      .then(response => response.json())
+      .then(users => this.setState({ users }))
   }
   render () {
     return (
       <Container>
-        <h1>TodoList</h1>
-        <TodoListFilter />
-        <TodoList tasks={this.state.tasks} />
+        {
+          this.state.users.map((u, k) => (
+            <Item key={k}>
+              <Item.Image size='tiny' src={`/avatars${u.avatar}`} />
+              <Item.Content verticalAlign='middle'>{u.username}</Item.Content>
+            </Item>
+          ))
+        }
       </Container>
     )
   }
