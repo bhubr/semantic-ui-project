@@ -1,9 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import TodoItem from './TodoItem'
-import { Checkbox, Label, Menu, Table } from 'semantic-ui-react'
+import { Table } from 'semantic-ui-react'
 
-const TodoList = ({ tasks }) => (
+const TodoList = props => (
   <Table>
     <Table.Header>
       <Table.Row>
@@ -14,7 +14,7 @@ const TodoList = ({ tasks }) => (
 
     <Table.Body>
       {
-        tasks.map((task, k) => (
+        props.tasks.map((task, k) => (
           <TodoItem key={k} task={task} />
         ))
       }
