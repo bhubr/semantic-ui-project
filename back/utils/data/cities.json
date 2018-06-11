@@ -1,0 +1,42 @@
+[
+  {
+    "name": "Paris",
+    "lat": 48.85,
+    "lon": 2.21
+  },
+  {
+    "name": "Lyon",
+    "lat": 45.76,
+    "lon": 4.76
+  },
+  {
+    "name": "Marseille",
+    "lat": 43.28,
+    "lon": 5.24
+  },
+  {
+    "name": "Toulouse",
+    "lat": 43.60,
+    "lon": 1.44
+  },
+  {
+    "name": "Lille",
+    "lat": 50.63,
+    "lon": 2.98
+  },
+  {
+    "name": "Bordeaux",
+    "lat": 44.86,
+    "lon": -0.65
+  },
+  {
+    "name": "Nantes",
+    "lat": 47.23,
+    "lon": -1.63
+  },
+  {
+    "name": "Nice",
+    "lat": 43.70,
+    "lon": 7.18
+  }
+]
