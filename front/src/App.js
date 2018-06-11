@@ -14,10 +14,24 @@ class App extends Component {
       filter: 'todo'
     }
     this.handleChange = this.handleChange.bind(this)
+    this.handleCheckbox= this.handleCheckbox.bind(this)
+
   }
   handleChange (e, radio) {
     this.setState({ filter: radio.value })
   }
+  handleCheckbox (id) {
+    const {tasks} = this.state
+    const newTasks= [...tasks]
+    const taskIndex= newTasksIndex.findIndex(
+      obj => obj.id === id
+    )
+    newTasks[taskIndex].done = ! newTasks[taskIndex].done
+    this.setState({tasks: newtasks })
+    console.log(id)
+  }
+
+
 
   render () {
     let tasks
@@ -30,6 +44,15 @@ class App extends Component {
     //  }
     //  else if(filter === 'todo') {
     //    tasks=this.state.tasks.filter(task => ! task.done)
+
+    // const filterFuncs= {
+    //  all: () => true ,
+    //  done: task => task.done,
+    //  todo: task => ! task.done
+    // }
+    // const filterFunc = filterFuncs[filter]
+    // const tasks = this.state.tasks.filter(filterFunc)
+
     switch (filter) {
       case 'all':
         tasks = this.state.tasks
@@ -46,7 +69,7 @@ class App extends Component {
       <Container>
         <h1>TodoList</h1>
         <TodoListFilter value={this.state.filter} handleChange={this.handleChange}/>
-        <TodoList tasks={tasks} />
+        <TodoList tasks={tasks}  handleCheckbox={this.handleCheckbox}/>
       </Container>
     )
   }
