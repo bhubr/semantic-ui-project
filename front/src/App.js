@@ -15,21 +15,47 @@ class App extends Component {
       filter: 'todo'
     }
     this.handleChange = this.handleChange.bind(this)
+    this.handleToggle = this.handleToggle.bind(this)
   }
   handleChange (e, radio) {
     this.setState({ filter: radio.value })
   }
 
+  handleToggle (id) {
+    console.log(id)
+    const {tasks} = this.state
+    const newTasks = [...tasks]
+    const taskIndex = newTasks.findIndex(
+      obj => obj.id === id
+    )
+    newTasks[taskIndex].done = !newTasks[taskIndex].done
+    this.setState({
+      tasks: newTasks
+    })
+  }
   render () {
-    let tasks
+    // Cas 1 : Création d'options de filtrage
     const {filter} = this.state
-    switch(filter) {
-      case 'all': tasks = this.state.tasks
-        break
-      case 'done': tasks = this.state.tasks.filter(task => task.done)
-        break
-      case 'todo': default: tasks = this.state.tasks.filter(task => !task.done)
+    const filterFuncs = {
+      all: () => true,
+      done: task => task.done,
+      todo: task => !task.done
     }
+    const filterFunc = filterFuncs[filter]
+    const tasks = this.state.tasks.filter(filterFunc)
+
+    // let tasks
+
+    // Cas 2 : Switch
+    // switch (filter) {
+    //   case 'all': tasks = this.state.tasks
+    //     break
+    //   case 'done': tasks = this.state.tasks.filter(task => task.done)
+    //     break
+    //   case 'todo': default: tasks = this.state.tasks.filter(task => !task.done)
+    // }
+
+    // Cas 3: Conditions
     // if (filter === 'all') {
     //   tasks = this.state.tasks
     // }
@@ -44,7 +70,7 @@ class App extends Component {
       <Container>
         <h1>TodoList</h1>
         <TodoListFilter value={this.state.filter} handleChangeFilter={this.handleChange} />
-        <TodoList tasks={tasks} />
+        <TodoList tasks={tasks} handleToggle={this.handleToggle}/>
       </Container>
     )
   }
