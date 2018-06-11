@@ -5,5 +5,7 @@ const fs = require('fs')
 const generateUsers = (num = 10) => sequence(0, num)
   .map(generateUser)
 
-const users = generateUsers(1000)
+const givenNumber = process.argv[2]
+const users = generateUsers(givenNumber)
+console.log(users)
 fs.writeFileSync('users.json', JSON.stringify(users, null, 2))
