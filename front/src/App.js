@@ -13,6 +13,18 @@ class App extends Component {
         { id: 3, color: '#6A2135', name: 'Silvio Berlusconi', votes: 1, image: 'https://static.thetoptens.com/img/lists/1404.jpg' }
       ]
     }
+    this.handleVote = this.handleVote.bind(this)
+  }
+  handleVote (id) {
+    const { candidates } = this.state
+    const candidatesCopy = [...candidates]
+    const i = candidatesCopy.findIndex(
+      candidate => candidate.id === id
+    )
+    candidatesCopy[i].votes += 1
+    this.setState({
+      candidates: candidatesCopy
+    })
   }
   render () {
     return (
@@ -21,7 +33,9 @@ class App extends Component {
         <p>Who&apos;s the greatest of them all?</p>
         <Grid columns={2}>
           <Grid.Column>
-            <CandidateList candidates={this.state.candidates} />
+            <CandidateList
+              candidates={this.state.candidates}
+              handleVote={this.handleVote} />
           </Grid.Column>
           <Grid.Column>
             <PieChart
