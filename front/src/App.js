@@ -16,9 +16,14 @@ class App extends Component {
     this.handleVote = this.handleVote.bind(this)
   }
   handleVote (id) {
-    console.log(id)
+    const {candidates} = this.state
+    const i = candidates.findIndex(
+      candidate => candidate.id === id
+    )
+    const candidatesCopy= [... candidates]
+    candidatesCopy[i].votes += 1
 
-    this.setState({ })
+    this.setState({candidate : candidatesCopy })
   }
   render () {
     return (
