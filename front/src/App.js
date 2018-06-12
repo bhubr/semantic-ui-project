@@ -1,23 +1,36 @@
 import React, { Component } from 'react'
-import { Container } from 'semantic-ui-react'
-import TodoList from './TodoList'
-import TodoListFilter from './TodoListFilter'
+import { Container, Grid } from 'semantic-ui-react'
+import CandidateList from './voteforme/CandidateList'
+import PieChart from 'react-minimal-pie-chart'
 
 class App extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      tasks: [
-        { id: 1, done: true, description: 'Faire la vaisselle' }
+      candidates: [
+        { id: 1, color: '#E38627', name: 'Donald Trump', votes: 1, image: 'https://static.thetoptens.com/img/lists/6836.jpg' },
+        { id: 2, color: '#C13C37', name: 'George W Bush', votes: 1, image: 'https://static.thetoptens.com/img/lists/31161.jpg' },
+        { id: 3, color: '#6A2135', name: 'Silvio Berlusconi', votes: 1, image: 'https://static.thetoptens.com/img/lists/1404.jpg' }
       ]
     }
   }
   render () {
     return (
       <Container>
-        <h1>TodoList</h1>
-        <TodoListFilter />
-        <TodoList tasks={this.state.tasks} />
+        <h1>RateUrMaddaFakka</h1>
+        <p>Who&apos;s the greatest of them all?</p>
+        <Grid columns={2}>
+          <Grid.Column>
+            <CandidateList candidates={this.state.candidates} />
+          </Grid.Column>
+          <Grid.Column>
+            <PieChart
+              data={this.state.candidates.map(
+                candidate => ({ color: candidate.color, value: candidate.votes })
+              )}
+            />
+          </Grid.Column>
+        </Grid>
       </Container>
     )
   }
