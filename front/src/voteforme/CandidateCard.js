@@ -11,11 +11,12 @@ const CandidateCard = props => (
         <span className='date'>{ props.candidate.artist }</span>
       </Card.Meta>
       <Card.Description style={{textAlign: 'center'}}>
-        <Icon name="thumbs up" size='large' />
+        <Icon name="thumbs up" size='large'
+          onClick= {() => props.handleVote(props.candidate.id)} />
       </Card.Description>
     </Card.Content>
     <Card.Content extra style={{textAlign: 'center', backgroundColor: props.candidate.color, color: '#fff'}}>
-    { props.candidate.votes } { props.candidate.votes === 1 ? 'vote' : 'votes' }
+      { props.candidate.votes } { props.candidate.votes === 1 ? 'vote' : 'votes' }
     </Card.Content>
   </Card>
 )
