@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Container, Grid } from 'semantic-ui-react'
 import CandidateList from './voteforme/CandidateList'
-import PieChart from 'react-minimal-pie-chart'
+import CandidatePieChart from './voteforme/CandidatePieChart'
 
 class App extends Component {
   constructor (props) {
@@ -18,11 +18,7 @@ class App extends Component {
             <CandidateList />
           </Grid.Column>
           <Grid.Column>
-            {/* <PieChart
-              data={this.state.candidates.map(
-                candidate => ({ color: candidate.color, value: candidate.votes })
-              )}
-            /> */}
+            <CandidatePieChart />
           </Grid.Column>
         </Grid>
       </Container>
