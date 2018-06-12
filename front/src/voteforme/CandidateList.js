@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Grid } from 'semantic-ui-react'
 import CandidateCard from './CandidateCard'
+import { connect } from 'react-redux'
 
 const CandidateList = (props) => (
   <Grid columns={3}>
@@ -9,8 +10,7 @@ const CandidateList = (props) => (
       props.candidates.map((c, k) =>
         <Grid.Column key={k}>
           <CandidateCard
-            candidate={c}
-            handleVote={props.handleVote} />
+            candidate={c} />
         </Grid.Column>
       )
     }
@@ -21,4 +21,7 @@ CandidateList.propTypes = {
   candidates: PropTypes.array
 }
 
-export default CandidateList
+const mapStateToProps = state => ({
+  candidates: state.candidates
+})
+export default connect(mapStateToProps)(CandidateList)

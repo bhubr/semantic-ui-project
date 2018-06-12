@@ -1,6 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Card, Image, Icon, Rating } from 'semantic-ui-react'
+import { Card, Image, Icon } from 'semantic-ui-react'
+import { connect } from 'react-redux'
+import { incrementVote } from '../actions'
 
 const CandidateCard = props => (
   <Card>
@@ -27,4 +29,8 @@ CandidateCard.propTypes = {
   album: PropTypes.object
 }
 
-export default CandidateCard
+const mapDispatchToProps = dispatch => ({
+  handleVote: id => dispatch(incrementVote(id))
+})
+
+export default connect(null, mapDispatchToProps)(CandidateCard)
