@@ -23,11 +23,11 @@ class App extends Component {
   handleCheckbox (id) {
     const {tasks} = this.state
     const newTasks= [...tasks]
-    const taskIndex= newTasksIndex.findIndex(
+    const taskIndex= newTasks.findIndex(
       obj => obj.id === id
     )
     newTasks[taskIndex].done = ! newTasks[taskIndex].done
-    this.setState({tasks: newtasks })
+    this.setState({tasks: newTasks })
     console.log(id)
   }
 
