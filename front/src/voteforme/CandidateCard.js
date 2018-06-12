@@ -15,13 +15,14 @@ const CandidateCard = props => (
       </Card.Description>
     </Card.Content>
     <Card.Content extra style={{textAlign: 'center', backgroundColor: props.candidate.color, color: '#fff'}}>
-    { props.candidate.votes } { props.candidate.votes === 1 ? 'vote' : 'votes' }
+      { props.candidate.votes } { props.candidate.votes === 1 ? 'vote' : 'votes' }
     </Card.Content>
   </Card>
 )
 
 CandidateCard.propTypes = {
-  album: PropTypes.object
+  album: PropTypes.object,
+  candidate: PropTypes.object
 }
 
 export default CandidateCard
