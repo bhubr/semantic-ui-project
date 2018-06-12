@@ -8,7 +8,10 @@ const CandidateList = (props) => (
     {
       props.candidates.map((c, k) =>
         <Grid.Column key={k}>
-          <CandidateCard candidate={c} />
+          <CandidateCard
+            candidate={c} 
+            handleVote = {props.handleVote}
+          />
         </Grid.Column>
       )
     }
