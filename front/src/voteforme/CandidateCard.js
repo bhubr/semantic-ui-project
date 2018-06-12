@@ -1,6 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Card, Image, Icon, Rating } from 'semantic-ui-react'
+import { connect } from 'react-redux'
+import { incrementVote } from '../actions'
 
 const CandidateCard = props => (
   <Card>
@@ -19,13 +21,20 @@ const CandidateCard = props => (
       </Card.Description>
     </Card.Content>
     <Card.Content extra style={{textAlign: 'center', backgroundColor: props.candidate.color, color: '#fff'}}>
-    { props.candidate.votes } { props.candidate.votes === 1 ? 'vote' : 'votes' }
+      { props.candidate.votes } { props.candidate.votes === 1 ? 'vote' : 'votes' }
     </Card.Content>
   </Card>
 )
 
 CandidateCard.propTypes = {
-  album: PropTypes.object
+  album: PropTypes.object,
+  handleVote: PropTypes.func
 }
 
-export default CandidateCard
+const mapDispatchToProps = dispatch => {
+  return {
+    handleVote: id => dispatch(incrementVote(id))
+  }
+}
+
+export default connect(null, mapDispatchToProps)(CandidateCard)
